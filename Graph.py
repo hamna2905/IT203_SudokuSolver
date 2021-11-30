@@ -81,7 +81,16 @@ class Graph:
                     block=self.block9
 
                 
-                self.node_array[key].updateDict(key,rows,cols,block)             
+                self.node_array[key].updateList(key,rows,cols,block) 
+                
+                
+    def possibleValues(self, key):
+        possible_values = [1,2,3,4,5,6,7,8,9]
+        for i in self.node_array[key-1].connectedTo:
+            if self.node_array[i-1].data in possible_values:
+                possible_values.remove(self.node_array[i-1].data)
+        
+        return possible_values
                     
                 
                 

@@ -4,7 +4,7 @@ class Node:
         
         self.id = idx
         self.data = data
-        self.connectedTo = dict()
+        self.connectedTo = list()
         
 
   
@@ -20,13 +20,17 @@ class Node:
         return self.data
 
     
-    def updateDict(self,key,rows,col,block):
+    def updateList(self,key,rows,col,block):
         value=list()
         value.append(rows)
         value.append(col)
         value.append(block)
-        d={key: value}
-        self.connectedTo.update(d)
+        self.connectedTo = value
+        
+        
+        
+        
+        
 
    
             
