@@ -10,6 +10,7 @@ class Node:
   
           
     def printNode(self):
+        
         return (self.data)
         
 #function to access and change data using id-done
@@ -22,10 +23,9 @@ class Node:
     
     def updateList(self,key,rows,col,block):
         value=list()
-        value.append(rows)
-        value.append(col)
-        value.append(block)
-        self.connectedTo[key]=value
+        value=rows+col+block
+       
+        self.connectedTo=value
         
         
         

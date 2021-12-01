@@ -19,17 +19,17 @@ class Graph:
         self.block8=[58,59,60,67,68,69,76,77,78]
         self.block9=[61,62,63,70,71,72,79,80,81]
 
-        grid=np.zeros((n,n))
+        self.grid=np.zeros((n,n))
         for i in range(n):
             for j in range(n):
-                grid[i][j]=pos
+                self.grid[i][j]=pos
                 pos+=1
 
         for i in range(n):
            for j in range(n):
               node=Node(count,matrix[i][j])
               self.node_array.append(node)
-              count=+1
+              count+=1
               
     def displayGraph(self,n):
         for i in range (0,len(self.node_array)):
@@ -44,24 +44,24 @@ class Graph:
             if self.node_array[i].id==id:
                 self.node_array[i].setData(data)
     
-    def createEdge(self,order,grid):         #put in graph class
-        for i in range(order):
-            for j in range(order):
-                key=grid[i][j]
+    def createEdge(self,order):         #put in graph class
+        for i in range(0,order):
+            for j in range(0,order):
+                key=self.grid[i][j]
                 rows=list()
                 for k in range(0,order):
-                    value=grid[i][k]
+                    value=self.grid[i][k]
                     if value!=key:
                      rows.append(value)
 
                 cols =list()
                 for k in range(0,order):
-                    value=grid[k][j]
+                    value=self.grid[k][j]
                     if value!=key:
                         cols.append(value)
 
 
-                        block=list()
+                block=list()
                 if key in self.block1:
                     block=self.block1
                 elif key in self.block2:
@@ -81,15 +81,21 @@ class Graph:
                 elif key in self.block9:
                     block=self.block9
 
-                
-                self.node_array[key-1].updateList(key,rows,cols,block) 
+                block.remove(int(key))
+
+                index=int(key-1)
+                self.node_array[index].updateList(index,rows,cols,block) 
                 
                 
     def possibleValues(self, key):
         possible_values = [1,2,3,4,5,6,7,8,9]
-        for i in self.node_array[key-1].connectedTo:
-            if self.node_array[i-1].data in possible_values:
-                possible_values.remove(self.node_array[i-1].data)
+        arr=self.node_array[int(key-1)].connectedTo
+        for i in arr:
+            if self.node_array[int(i-1)].data in possible_values:
+                
+                possible_values.remove(self.node_array[int(i-1)].data)
+                # print(key)
+                # print(possible_values)
         
         return possible_values
                     
