@@ -27,16 +27,17 @@ class Graph:
 
         for i in range(n):
            for j in range(n):
-              n=Node(count,matrix[i][j])
-              self.node_array.append(n)
+              node=Node(count,matrix[i][j])
+              self.node_array.append(node)
               count=+1
               
     def displayGraph(self,n):
         for i in range (0,len(self.node_array)):
             if i%n==0:
                 print("\n")
+                print(self.node_array[i].printNode(),end="   ")
             else:
-                print(self.node_array[i].printNode())
+                print(self.node_array[i].printNode(),end="   ")
 
     def updateData(self,id,data):
         for i in range(len(self.node_array)):
@@ -81,7 +82,7 @@ class Graph:
                     block=self.block9
 
                 
-                self.node_array[key].updateList(key,rows,cols,block) 
+                self.node_array[key-1].updateList(key,rows,cols,block) 
                 
                 
     def possibleValues(self, key):
@@ -98,10 +99,5 @@ class Graph:
 
 
 
-            
-   
-                            
-     
-            
-         
-            
+
+

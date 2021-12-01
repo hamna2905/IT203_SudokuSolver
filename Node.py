@@ -10,7 +10,7 @@ class Node:
   
           
     def printNode(self):
-        print(self.data)
+        return (self.data)
         
 #function to access and change data using id-done
     def setData(self,data):
@@ -25,7 +25,7 @@ class Node:
         value.append(rows)
         value.append(col)
         value.append(block)
-        self.connectedTo = value
+        self.connectedTo[key]=value
         
         
         
