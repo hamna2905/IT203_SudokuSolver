@@ -24,7 +24,7 @@ class Node:
     def updateList(self,key,rows,col,block):
         value=list()
         value=rows+col+block
-       
+        
         self.connectedTo=value
         
         

@@ -1,4 +1,4 @@
-
+import copy
 from Node import Node
 import numpy as np
 class Graph:
@@ -43,7 +43,9 @@ class Graph:
         for i in range(len(self.node_array)):
             if self.node_array[i].id==id:
                 self.node_array[i].setData(data)
-    
+                
+                break
+            
     def createEdge(self,order):         #put in graph class
         for i in range(0,order):
             for j in range(0,order):
@@ -63,23 +65,23 @@ class Graph:
 
                 block=list()
                 if key in self.block1:
-                    block=self.block1
+                    block=copy.deepcopy(self.block1)
                 elif key in self.block2:
-                    block=self.block2
+                    block=copy.deepcopy(self.block2)
                 elif key in self.block3:
-                    block=self.block3
+                    block=copy.deepcopy(self.block3)
                 elif key in self.block4:
-                    block=self.block4
+                    block=copy.deepcopy(self.block4)
                 elif key in self.block5:
-                    block=self.block5
+                    block=copy.deepcopy(self.block5)
                 elif key in self.block6:
-                    block=self.block6
+                    block=copy.deepcopy(self.block6)
                 elif key in self.block7:
-                    block=self.block7
+                    block=copy.deepcopy(self.block7)
                 elif key in self.block8:
-                    block=self.block8
+                    block=copy.deepcopy(self.block8)
                 elif key in self.block9:
-                    block=self.block9
+                    block=copy.deepcopy(self.block9)
 
                 block.remove(int(key))
 
@@ -90,10 +92,14 @@ class Graph:
     def possibleValues(self, key):
         possible_values = [1,2,3,4,5,6,7,8,9]
         arr=self.node_array[int(key-1)].connectedTo
+        
         for i in arr:
+
             if self.node_array[int(i-1)].data in possible_values:
+        
                 
                 possible_values.remove(self.node_array[int(i-1)].data)
+                
                 # print(key)
                 # print(possible_values)
         
