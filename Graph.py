@@ -5,6 +5,7 @@ class Graph:
     
     def __init__(self,n,matrix):
         self.node_array = list()
+        self.order=n
        
         count=1
         pos=1
@@ -90,7 +91,10 @@ class Graph:
                 
                 
     def possibleValues(self, key):
-        possible_values = [1,2,3,4,5,6,7,8,9]
+        possible_values = list()
+        for i in range(self.order):
+            possible_values.append(i+1)
+            
         arr=self.node_array[int(key-1)].connectedTo
         
         for i in arr:
