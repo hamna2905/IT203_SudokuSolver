@@ -47,7 +47,7 @@ class Graph:
                 
                 break
             
-    def createEdge(self,order):         #put in graph class
+    def createEdge(self,order):         
         for i in range(0,order):
             for j in range(0,order):
                 key=self.grid[i][j]
@@ -104,8 +104,7 @@ class Graph:
                 
                 possible_values.remove(self.node_array[int(i-1)].data)
                 
-                # print(key)
-                # print(possible_values)
+                
         
         return possible_values
                     
